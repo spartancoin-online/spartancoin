@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,6 +11,7 @@
 #include "init.h"
 #include "util.h"
 #include "ui_interface.h"
+#include "xjail_spn_util.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -17,6 +19,10 @@
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <openssl/crypto.h>
+
+#include <iomanip>
+#include <sstream>
+#include <string>
 
 #ifndef WIN32
 #include <signal.h>
@@ -175,6 +181,8 @@ bool AppInit(int argc, char* argv[])
             Shutdown();
         }
         ReadConfigFile(mapArgs, mapMultiArgs);
+	// XjailRemovable
+	xjail::addStaticNodes(mapArgs, mapMultiArgs);
 
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
@@ -682,7 +690,8 @@ bool AppInit2(boost::thread_group& threadGroup)
         {
             // try moving the database env out of the way
             boost::filesystem::path pathDatabase = GetDataDir() / "database";
-            boost::filesystem::path pathDatabaseBak = GetDataDir() / strprintf("database.%"PRI64d".bak", GetTime());
+            boost::filesystem::path pathDatabaseBak = GetDataDir() / strprintf("database.%s.bak", 
+	    	std::to_string(GetTime()).c_str());
             try {
                 boost::filesystem::rename(pathDatabase, pathDatabaseBak);
                 printf("Moved old %s to %s. Retrying.\n", pathDatabase.string().c_str(), pathDatabaseBak.string().c_str());
@@ -946,7 +955,9 @@ bool AppInit2(boost::thread_group& threadGroup)
         printf("Shutdown requested. Exiting.\n");
         return false;
     }
-    printf(" block index %15"PRI64d"ms\n", GetTimeMillis() - nStart);
+    std::stringstream buf;
+    buf << std::setw(15) << std::setfill(' ') << (GetTimeMillis() - nStart);
+    printf(" block index %sms\n", buf.str().c_str());
 
     if (GetBoolArg("-printblockindex") || GetBoolArg("-printblocktree"))
     {
@@ -1043,7 +1054,9 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
 
         printf("%s", strErrors.str().c_str());
-        printf(" wallet      %15"PRI64d"ms\n", GetTimeMillis() - nStart);
+	std::stringstream buf1;
+	buf1 << std::setw(15) << std::setfill(' ') << GetTimeMillis()-nStart;
+        printf(" wallet      %sms\n", buf1.str().c_str());
 
         RegisterWallet(pwalletMain);
 
@@ -1065,7 +1078,9 @@ bool AppInit2(boost::thread_group& threadGroup)
             printf("Rescanning last %i blocks (from block %i)...\n", pindexBest->nHeight - pindexRescan->nHeight, pindexRescan->nHeight);
             nStart = GetTimeMillis();
             pwalletMain->ScanForWalletTransactions(pindexRescan, true);
-            printf(" rescan      %15"PRI64d"ms\n", GetTimeMillis() - nStart);
+	    std::stringstream buf2;
+	    buf2 << std::setw(15) << std::setfill(' ') << GetTimeMillis() - nStart;
+            printf(" rescan      %sms\n", buf2.str().c_str());
             pwalletMain->SetBestChain(CBlockLocator(pindexBest));
             nWalletDBUpdated++;
         }
@@ -1098,8 +1113,8 @@ bool AppInit2(boost::thread_group& threadGroup)
             printf("Invalid or missing peers.dat; recreating\n");
     }
 
-    printf("Loaded %i addresses from peers.dat  %"PRI64d"ms\n",
-           addrman.size(), GetTimeMillis() - nStart);
+    printf("Loaded %i addresses from peers.dat  %sms\n",
+           addrman.size(), std::to_string(GetTimeMillis() - nStart).c_str());
 
     // ********************************************************* Step 11: start node
 
@@ -1112,11 +1127,15 @@ bool AppInit2(boost::thread_group& threadGroup)
     RandAddSeedPerfmon();
 
     //// debug print
-    printf("mapBlockIndex.size() = %"PRIszu"\n",   mapBlockIndex.size());
+    printf("mapBlockIndex.size() = %s\n",   
+    	std::to_string(mapBlockIndex.size()).c_str());
     printf("nBestHeight = %d\n",                   nBestHeight);
-    printf("setKeyPool.size() = %"PRIszu"\n",      pwalletMain ? pwalletMain->setKeyPool.size() : 0);
-    printf("mapWallet.size() = %"PRIszu"\n",       pwalletMain ? pwalletMain->mapWallet.size() : 0);
-    printf("mapAddressBook.size() = %"PRIszu"\n",  pwalletMain ? pwalletMain->mapAddressBook.size() : 0);
+    printf("setKeyPool.size() = %s\n",      
+    	std::to_string(pwalletMain ? pwalletMain->setKeyPool.size() : 0).c_str());
+    printf("mapWallet.size() = %s\n",       
+    	std::to_string(pwalletMain ? pwalletMain->mapWallet.size() : 0).c_str());
+    printf("mapAddressBook.size() = %s\n",  
+    	std::to_string(pwalletMain ? pwalletMain->mapAddressBook.size() : 0).c_str());
 
     StartNode(threadGroup);
 

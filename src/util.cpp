@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,6 +21,9 @@
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
+
+#include <iomanip>
+#include <sstream>
 
 // Work around clang compilation problem in Boost 1.46:
 // /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup
@@ -393,7 +397,11 @@ string FormatMoney(int64 n, bool fPlus)
     int64 n_abs = (n > 0 ? n : -n);
     int64 quotient = n_abs/COIN;
     int64 remainder = n_abs%COIN;
-    string str = strprintf("%"PRI64d".%08"PRI64d, quotient, remainder);
+
+	std::stringstream buf;
+	buf << quotient;
+	buf << std::setw(8) << std::setfill('0') << remainder;
+	std::string str = buf.str();
 
     // Right-trim excess zeros before the decimal point:
     int nTrim = 0;
@@ -1319,6 +1327,14 @@ int64 GetAdjustedTime()
     return GetTime() + GetTimeOffset();
 }
 
+std::string i2ss(const int64 & value) { // int64_to_str_with_signed
+	std::stringstream tmp;
+	if (value >= 0)
+		tmp << "+";
+	tmp << value;
+	return tmp.str();
+}
+
 void AddTimeData(const CNetAddr& ip, int64 nTime)
 {
     int64 nOffsetSample = nTime - GetTime();
@@ -1330,7 +1346,8 @@ void AddTimeData(const CNetAddr& ip, int64 nTime)
 
     // Add data
     vTimeOffsets.input(nOffsetSample);
-    printf("Added time data, samples %d, offset %+"PRI64d" (%+"PRI64d" minutes)\n", vTimeOffsets.size(), nOffsetSample, nOffsetSample/60);
+    printf("Added time data, samples %d, offset %s (%s minutes)\n", 
+    	vTimeOffsets.size(), i2ss(nOffsetSample).c_str(), i2ss(nOffsetSample/60).c_str());
     if (vTimeOffsets.size() >= 5 && vTimeOffsets.size() % 2 == 1)
     {
         int64 nMedian = vTimeOffsets.median();
@@ -1365,10 +1382,10 @@ void AddTimeData(const CNetAddr& ip, int64 nTime)
         }
         if (fDebug) {
             BOOST_FOREACH(int64 n, vSorted)
-                printf("%+"PRI64d"  ", n);
+                printf("%s  ", i2ss(n).c_str());
             printf("|  ");
         }
-        printf("nTimeOffset = %+"PRI64d"  (%+"PRI64d" minutes)\n", nTimeOffset, nTimeOffset/60);
+        printf("nTimeOffset = %s  (%s minutes)\n", i2ss(nTimeOffset).c_str(), i2ss(nTimeOffset/60).c_str());
     }
 }
 

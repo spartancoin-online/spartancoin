@@ -48,7 +48,9 @@ Value getpeerinfo(const Array& params, bool fHelp)
         Object obj;
 
         obj.push_back(Pair("addr", stats.addrName));
-        obj.push_back(Pair("services", strprintf("%08"PRI64x, stats.nServices)));
+	std::stringstream buf;
+	buf << std::setw(8) << std::setfill('0') << std::hex << stats.nServices;
+        obj.push_back(Pair("services", strprintf("%s", buf.str().c_str())));
         obj.push_back(Pair("lastsend", (boost::int64_t)stats.nLastSend));
         obj.push_back(Pair("lastrecv", (boost::int64_t)stats.nLastRecv));
         obj.push_back(Pair("bytessent", (boost::int64_t)stats.nSendBytes));

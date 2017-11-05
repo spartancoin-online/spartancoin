@@ -15,6 +15,7 @@
 #include "ui_interface.h"
 #include "paymentserver.h"
 #include "splashscreen.h"
+#include "xjail_spn_util.h"
 
 #include <QMessageBox>
 #if QT_VERSION < 0x050000
@@ -24,6 +25,8 @@
 #include <QTimer>
 #include <QTranslator>
 #include <QLibraryInfo>
+
+#include <string>
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -151,6 +154,8 @@ int main(int argc, char *argv[])
         return 1;
     }
     ReadConfigFile(mapArgs, mapMultiArgs);
+	// XjailRemovable
+	xjail::addStaticNodes(mapArgs, mapMultiArgs);
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)

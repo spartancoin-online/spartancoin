@@ -9,6 +9,9 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 
+#include <sstream>
+#include <iomanip>
+
 #ifndef WIN32
 #include "sys/stat.h"
 #endif
@@ -456,7 +459,12 @@ void CDBEnv::Flush(bool fShutdown)
             else
                 mi++;
         }
-        printf("DBFlush(%s)%s ended %15"PRI64d"ms\n", fShutdown ? "true" : "false", fDbEnvInit ? "" : " db not started", GetTimeMillis() - nStart);
+	std::stringstream buf;
+	buf << std::setw(15) << std::setfill(' ') << GetTimeMillis()-nStart;
+        printf("DBFlush(%s)%s ended %sms\n", 
+		fShutdown ? "true" : "false", 
+		fDbEnvInit ? "" : " db not started", 
+		buf.str().c_str());
         if (fShutdown)
         {
             char** listp;

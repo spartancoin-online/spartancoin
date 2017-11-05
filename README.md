@@ -1,12 +1,12 @@
 Spartancoin integration/staging tree
 ================================
 
-http://www.spartancoin.org
+http://www.xjail.tiv.cc
 
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2011-2013 Litecoin Developers
 Copyright (c) 2014 Spartancoin Developers
-
+Copyright (c) 2017 xjail.tiv.cc Developers
 
 What is Spartancoin?
 ----------------
@@ -14,7 +14,7 @@ What is Spartancoin?
 Spartancoin is a version os Litecoin using scrypt as a proof-of-work algorithm.
  - 2 minute block targets
  - subsidy halves in 400,000 blocks
- - ~100 billions total coins
+ - ~50 billions total coins
  - 150,000 coins per block
  - Difficulty Retarget: Every block using Kimoto's gravity well.
 
@@ -48,6 +48,10 @@ regularly to indicate new official, stable release versions of Spartancoin.
 
 INFO
 -------
+FreeBSD 12.0 - x86_64:
+Spartancoin Qt Window - spartancoin-qt
+Spartancoin Daemon - spartancoind
+
 GUI wallet Windows 32 = Spartancoin-Qt.exe 
 daemon win32 = spartancoind.exe 
 

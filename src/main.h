@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_MAIN_H
@@ -12,6 +13,8 @@
 #include "scrypt.h"
 
 #include <list>
+#include <sstream>
+#include <iomanip>
 
 class CWallet;
 class CBlock;
@@ -453,7 +456,11 @@ public:
     {
         if (scriptPubKey.size() < 6)
             return "CTxOut(error)";
-        return strprintf("CTxOut(nValue=%"PRI64d".%08"PRI64d", scriptPubKey=%s)", nValue / COIN, nValue % COIN, scriptPubKey.ToString().substr(0,30).c_str());
+	std::stringstream buf;
+	buf << std::setw(8) << std::setfill('0') << nValue%COIN;
+        return strprintf("CTxOut(nValue=%s.%s, scriptPubKey=%s)", 
+		std::to_string(nValue / COIN).c_str(), 
+		buf.str().c_str(), scriptPubKey.ToString().substr(0,30).c_str());
     }
 
     void print() const
@@ -649,11 +656,11 @@ void UpdateCoins(const CTransaction& tx, CValidationState &state, CCoinsViewCach
     std::string ToString() const
     {
         std::string str;
-        str += strprintf("CTransaction(hash=%s, ver=%d, vin.size=%"PRIszu", vout.size=%"PRIszu", nLockTime=%u)\n",
+        str += strprintf("CTransaction(hash=%s, ver=%d, vin.size=%s, vout.size=%s, nLockTime=%u)\n",
             GetHash().ToString().c_str(),
             nVersion,
-            vin.size(),
-            vout.size(),
+            std::to_string(vin.size()).c_str(),
+            std::to_string(vout.size()).c_str(),
             nLockTime);
         for (unsigned int i = 0; i < vin.size(); i++)
             str += "    " + vin[i].ToString() + "\n";
@@ -1493,7 +1500,7 @@ public:
 
     void print() const
     {
-        printf("CBlock(hash=%s, input=%s, PoW=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%"PRIszu")\n",
+        printf("CBlock(hash=%s, input=%s, PoW=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%s)\n",
             GetHash().ToString().c_str(),
             HexStr(BEGIN(nVersion),BEGIN(nVersion)+80,false).c_str(),
             GetPoWHash().ToString().c_str(),
@@ -1501,7 +1508,7 @@ public:
             hashPrevBlock.ToString().c_str(),
             hashMerkleRoot.ToString().c_str(),
             nTime, nBits, nNonce,
-            vtx.size());
+            std::to_string(vtx.size()).c_str());
         for (unsigned int i = 0; i < vtx.size(); i++)
         {
             printf("  ");

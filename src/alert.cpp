@@ -51,8 +51,8 @@ std::string CUnsignedAlert::ToString() const
     return strprintf(
         "CAlert(\n"
         "    nVersion     = %d\n"
-        "    nRelayUntil  = %"PRI64d"\n"
-        "    nExpiration  = %"PRI64d"\n"
+        "    nRelayUntil  = %s\n"
+        "    nExpiration  = %s\n"
         "    nID          = %d\n"
         "    nCancel      = %d\n"
         "    setCancel    = %s\n"
@@ -64,8 +64,8 @@ std::string CUnsignedAlert::ToString() const
         "    strStatusBar = \"%s\"\n"
         ")\n",
         nVersion,
-        nRelayUntil,
-        nExpiration,
+        std::to_string(nRelayUntil).c_str(),
+        std::to_string(nExpiration).c_str(),
         nID,
         nCancel,
         strSetCancel.c_str(),

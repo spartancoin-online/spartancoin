@@ -13,6 +13,7 @@ src/test_spartancoin
 
 # Compilation and Qt preprocessor part
 *.qm
+*.stash
 Makefile
 spartancoin-qt
 Spartancoin-Qt.app
@@ -32,3 +33,4 @@ qrc_*.cpp
 build
 
 !src/leveldb*/Makefile
+

@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_UTIL_H
@@ -239,9 +240,10 @@ void runCommand(std::string strCommand);
 
 
 
+// XjailAdd
 inline std::string i64tostr(int64 n)
 {
-    return strprintf("%"PRI64d, n);
+    return std::to_string(n);
 }
 
 inline std::string itostr(int n)
