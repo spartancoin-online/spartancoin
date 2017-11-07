@@ -27,7 +27,7 @@ MOC_DIR = build
 UI_DIR = build
 
 win32: {
-  BOOST_LIB_SUFFIX=-mgw48-mt-s-1_55
+  # BOOST_LIB_SUFFIX=-mgw48-mt-s-1_55
   BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
   BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
   BDB_INCLUDE_PATH=c:/deps/db-4.8.30.NC/build_unix
@@ -45,7 +45,7 @@ win32: {
   LIBS += -LC:\MinGW\mingw32\opt\bin
 }
 macx:{
-  BOOST_LIB_SUFFIX=-mt-s
+  # BOOST_LIB_SUFFIX=-mt-s
   BOOST_INCLUDE_PATH=/usr/local/opt/boost_1_55_0
   BOOST_LIB_PATH=/usr/local/opt/boost_1_55_0/stage/lib
   OPENSSL_INCLUDE_PATH=/usr/local/opt/openssl/include
@@ -68,8 +68,8 @@ macx:{
 }
 
 !win32:!macx:{
-  BOOST_LIB_SUFFIX=-mt-s
-  BOOST_THREAD_LIB_SUFFIX=-mt-s
+  # BOOST_LIB_SUFFIX=-mt-s
+  # BOOST_THREAD_LIB_SUFFIX=-mt-s
   BOOST_LIB_PATH=/usr/local/boost_1_55_0/stage/lib
   BOOST_INCLUDE_PATH=/usr/local/boost_1_55_0
   #CPPFLAGS="$CPPFLAGS -I/usr/local/protobuf/include"
@@ -86,8 +86,8 @@ macx:{
 }
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
-    macx:BOOST_LIB_SUFFIX = -mt-s
-    win32:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
+    # macx:BOOST_LIB_SUFFIX = -mt-s
+    # win32:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
