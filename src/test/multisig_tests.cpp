@@ -3,7 +3,6 @@
 #include <boost/assign/list_inserter.hpp>
 #include <boost/assign/std/vector.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/foreach.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <openssl/ec.h>
@@ -30,7 +29,7 @@ sign_multisig(CScript scriptPubKey, vector<CKey> keys, CTransaction transaction,
 
     CScript result;
     result << OP_0; // CHECKMULTISIG bug workaround
-    BOOST_FOREACH(const CKey &key, keys)
+    for(const CKey &key: keys)
     {
         vector<unsigned char> vchSig;
         BOOST_CHECK(key.Sign(hash, vchSig));

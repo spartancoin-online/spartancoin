@@ -739,7 +739,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
     {
         int nValidUrisFound = 0;
         QList<QUrl> uris = event->mimeData()->urls();
-        foreach(const QUrl &uri, uris)
+        for(const QUrl &uri: uris)
         {
             if (walletFrame->handleURI(uri.toString()))
                 nValidUrisFound++;

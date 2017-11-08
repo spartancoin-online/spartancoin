@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <boost/assign/list_of.hpp> // for 'map_list_of()'
-#include <boost/foreach.hpp>
+#include <boost/foreach.hpp>	// for 'BOOST_REVERSE_FOREACH'
 
 #include "checkpoints.h"
 

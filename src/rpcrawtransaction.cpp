@@ -1,5 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -70,7 +71,7 @@ void ScriptPubKeyToJSON(const CScript& scriptPubKey, Object& out)
     out.push_back(Pair("type", GetTxnOutputType(type)));
 
     Array a;
-    BOOST_FOREACH(const CTxDestination& addr, addresses)
+    for(const CTxDestination& addr: addresses)
         a.push_back(CBitcoinAddress(addr).ToString());
     out.push_back(Pair("addresses", a));
 }
@@ -81,7 +82,7 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, Object& entry)
     entry.push_back(Pair("version", tx.nVersion));
     entry.push_back(Pair("locktime", (boost::int64_t)tx.nLockTime));
     Array vin;
-    BOOST_FOREACH(const CTxIn& txin, tx.vin)
+    for(const CTxIn& txin: tx.vin)
     {
         Object in;
         if (tx.IsCoinBase())
@@ -191,7 +192,7 @@ Value listunspent(const Array& params, bool fHelp)
     if (params.size() > 2)
     {
         Array inputs = params[2].get_array();
-        BOOST_FOREACH(Value& input, inputs)
+        for(Value& input: inputs)
         {
             CBitcoinAddress address(input.get_str());
             if (!address.IsValid())
@@ -206,7 +207,7 @@ Value listunspent(const Array& params, bool fHelp)
     vector<COutput> vecOutputs;
     assert(pwalletMain != NULL);
     pwalletMain->AvailableCoins(vecOutputs, false);
-    BOOST_FOREACH(const COutput& out, vecOutputs)
+    for(const COutput& out: vecOutputs)
     {
         if (out.nDepth < nMinDepth || out.nDepth > nMaxDepth)
             continue;
@@ -272,7 +273,7 @@ Value createrawtransaction(const Array& params, bool fHelp)
 
     CTransaction rawTx;
 
-    BOOST_FOREACH(const Value& input, inputs)
+    for(const Value& input: inputs)
     {
         const Object& o = input.get_obj();
 
@@ -290,7 +291,7 @@ Value createrawtransaction(const Array& params, bool fHelp)
     }
 
     set<CBitcoinAddress> setAddress;
-    BOOST_FOREACH(const Pair& s, sendTo)
+    for(const Pair& s: sendTo)
     {
         CBitcoinAddress address(s.name_);
         if (!address.IsValid())
@@ -387,7 +388,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
         CCoinsViewMemPool viewMempool(viewChain, mempool);
         view.SetBackend(viewMempool); // temporarily switch cache backend to db+mempool view
 
-        BOOST_FOREACH(const CTxIn& txin, mergedTx.vin) {
+        for(const CTxIn& txin: mergedTx.vin) {
             const uint256& prevHash = txin.prevout.hash;
             CCoins coins;
             view.GetCoins(prevHash, coins); // this is certainly allowed to fail
@@ -402,7 +403,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
     {
         fGivenKeys = true;
         Array keys = params[2].get_array();
-        BOOST_FOREACH(Value k, keys)
+        for(Value k: keys)
         {
             CBitcoinSecret vchSecret;
             bool fGood = vchSecret.SetString(k.get_str());
@@ -419,7 +420,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
     if (params.size() > 1 && params[1].type() != null_type)
     {
         Array prevTxs = params[1].get_array();
-        BOOST_FOREACH(Value& p, prevTxs)
+        for(Value& p: prevTxs)
         {
             if (p.type() != obj_type)
                 throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "expected object with {\"txid'\",\"vout\",\"scriptPubKey\"}");
@@ -510,7 +511,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
             SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
 
         // ... and merge in other signatures:
-        BOOST_FOREACH(const CTransaction& txv, txVariants)
+        for(const CTransaction& txv: txVariants)
         {
             txin.scriptSig = CombineSignatures(prevPubKey, mergedTx, i, txin.scriptSig, txv.vin[i].scriptSig);
         }

@@ -70,7 +70,7 @@ bool PaymentServer::ipcSendCommandLine()
         savedPaymentRequests.append(args[i]);
     }
 
-    foreach (const QString& arg, savedPaymentRequests)
+    for(const QString& arg: savedPaymentRequests)
     {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
@@ -132,7 +132,7 @@ bool PaymentServer::eventFilter(QObject *object, QEvent *event)
 void PaymentServer::uiReady()
 {
     saveURIs = false;
-    foreach (const QString& s, savedPaymentRequests)
+    for(const QString& s: savedPaymentRequests)
         emit receivedURI(s);
     savedPaymentRequests.clear();
 }

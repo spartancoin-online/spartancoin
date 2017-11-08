@@ -1,4 +1,5 @@
 // Copyright (c) 2012 The Bitcoin developers
+// Copyright (c) 2017 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef CHECKQUEUE_H
@@ -110,7 +111,7 @@ private:
                 fOk = fAllOk;
             }
             // execute work
-            BOOST_FOREACH(T &check, vChecks)
+            for(T &check: vChecks)
                 if (fOk)
                     fOk = check();
             vChecks.clear();
@@ -135,7 +136,7 @@ public:
     // Add a batch of checks to the queue
     void Add(std::vector<T> &vChecks) {
         boost::unique_lock<boost::mutex> lock(mutex);
-        BOOST_FOREACH(T &check, vChecks) {
+        for(T &check: vChecks) {
             queue.push_back(T());
             check.swap(queue.back());
         }

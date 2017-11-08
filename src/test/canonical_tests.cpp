@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE(script_canon)
 {
     Array tests = read_json("sig_canonical.json");
 
-    BOOST_FOREACH(Value &tv, tests) {
+    for(Value &tv: tests) {
         string test = tv.get_str();
         if (IsHex(test)) {
             std::vector<unsigned char> sig = ParseHex(test);
@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE(script_noncanon)
 {
     Array tests = read_json("sig_noncanonical.json");
 
-    BOOST_FOREACH(Value &tv, tests) {
+    for(Value &tv: tests) {
         string test = tv.get_str();
         if (IsHex(test)) {
             std::vector<unsigned char> sig = ParseHex(test);

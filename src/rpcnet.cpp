@@ -1,4 +1,5 @@
 // Copyright (c) 2009-2012 Bitcoin Developers
+// Copyright (c) xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -25,7 +26,7 @@ static void CopyNodeStats(std::vector<CNodeStats>& vstats)
 
     LOCK(cs_vNodes);
     vstats.reserve(vNodes.size());
-    BOOST_FOREACH(CNode* pnode, vNodes) {
+    for(CNode* pnode: vNodes) {
         CNodeStats stats;
         pnode->copyStats(stats);
         vstats.push_back(stats);
@@ -44,7 +45,7 @@ Value getpeerinfo(const Array& params, bool fHelp)
 
     Array ret;
 
-    BOOST_FOREACH(const CNodeStats& stats, vstats) {
+    for(const CNodeStats& stats: vstats) {
         Object obj;
 
         obj.push_back(Pair("addr", stats.addrName));
@@ -132,14 +133,14 @@ Value getaddednodeinfo(const Array& params, bool fHelp)
     if (params.size() == 1)
     {
         LOCK(cs_vAddedNodes);
-        BOOST_FOREACH(string& strAddNode, vAddedNodes)
+        for(string& strAddNode: vAddedNodes)
             laddedNodes.push_back(strAddNode);
     }
     else
     {
         string strNode = params[1].get_str();
         LOCK(cs_vAddedNodes);
-        BOOST_FOREACH(string& strAddNode, vAddedNodes)
+        for(string& strAddNode: vAddedNodes)
             if (strAddNode == strNode)
             {
                 laddedNodes.push_back(strAddNode);
@@ -152,7 +153,7 @@ Value getaddednodeinfo(const Array& params, bool fHelp)
     if (!fDns)
     {
         Object ret;
-        BOOST_FOREACH(string& strAddNode, laddedNodes)
+        for(string& strAddNode: laddedNodes)
             ret.push_back(Pair("addednode", strAddNode));
         return ret;
     }
@@ -160,7 +161,7 @@ Value getaddednodeinfo(const Array& params, bool fHelp)
     Array ret;
 
     list<pair<string, vector<CService> > > laddedAddreses(0);
-    BOOST_FOREACH(string& strAddNode, laddedNodes)
+    for(string& strAddNode: laddedNodes)
     {
         vector<CService> vservNode(0);
         if(Lookup(strAddNode.c_str(), vservNode, GetDefaultPort(), fNameLookup, 0))
@@ -183,12 +184,12 @@ Value getaddednodeinfo(const Array& params, bool fHelp)
 
         Array addresses;
         bool fConnected = false;
-        BOOST_FOREACH(CService& addrNode, it->second)
+        for(CService& addrNode: it->second)
         {
             bool fFound = false;
             Object node;
             node.push_back(Pair("address", addrNode.ToString()));
-            BOOST_FOREACH(CNode* pnode, vNodes)
+            for(CNode* pnode: vNodes)
                 if (pnode->addr == addrNode)
                 {
                     fFound = true;

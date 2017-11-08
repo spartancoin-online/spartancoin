@@ -1,4 +1,5 @@
 // Copyright (c) 2012 The Bitcoin developers
+// Copyright (c) 2017 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include <math.h>
@@ -146,7 +147,7 @@ bool CBloomFilter::IsRelevantAndUpdate(const CTransaction& tx, const uint256& ha
     if (fFound)
         return true;
 
-    BOOST_FOREACH(const CTxIn& txin, tx.vin)
+    for(const CTxIn& txin: tx.vin)
     {
         // Match if the filter contains an outpoint tx spends
         if (contains(txin.prevout))
