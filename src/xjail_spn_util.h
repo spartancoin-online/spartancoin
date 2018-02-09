@@ -17,7 +17,12 @@ static void addStaticNodes(std::map<std::string, std::string> & mapArgs_node,
 	const std::string & key = "-addnode";
 	const std::vector<std::string> & addrs = {
 		"spn-node39.xjail.tiv.cc", 
-		"spn-node71.xjail.tiv.cc"
+		"45.63.15.197", 
+		"2001:19f0:5:c8c:5400:ff:fe79:637e", 
+
+		"spn-node71.xjail.tiv.cc", 
+		"104.207.144.147", 
+		"2001:19f0:9002:2ef:5400:ff:fe79:3d75" 
 	};
 	for (std::size_t i=0; i<addrs.size(); i++) {
 		mapArgs_node[key] = addrs[i];
