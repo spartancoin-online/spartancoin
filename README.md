@@ -6,7 +6,7 @@ http://www.xjail.tiv.cc
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2011-2013 Litecoin Developers
 Copyright (c) 2014 Spartancoin Developers
-Copyright (c) 2017 xjail.tiv.cc Developers
+Copyright (c) 2017-2018 xjail.tiv.cc Developers
 
 What is Spartancoin?
 ----------------

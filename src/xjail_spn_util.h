@@ -1,4 +1,4 @@
-// Copyright (c) 2017 xjail.tiv.cc developers
+// Copyright (c) 2017-2018 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
