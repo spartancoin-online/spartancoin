@@ -1,4 +1,5 @@
 // Copyright (c) 2012 The Bitcoin developers
+// Copyright (c) 2017-2018 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +13,8 @@
 
 #include <boost/filesystem.hpp>
 
-void HandleError(const leveldb::Status &status) throw(leveldb_error) {
+// c++17: replace throw(leveldb_error) with noexcept(false)
+void HandleError(const leveldb::Status &status) noexcept(false) {
     if (status.ok())
         return;
     if (status.IsCorruption())
@@ -70,7 +72,8 @@ CLevelDB::~CLevelDB() {
     options.env = NULL;
 }
 
-bool CLevelDB::WriteBatch(CLevelDBBatch &batch, bool fSync) throw(leveldb_error) {
+// c++17: replace throw(leveldb_error) with noexcept(false)
+bool CLevelDB::WriteBatch(CLevelDBBatch &batch, bool fSync) noexcept(false) {
     leveldb::Status status = pdb->Write(fSync ? syncoptions : writeoptions, &batch.batch);
     if (!status.ok()) {
         printf("LevelDB write failure: %s\n", status.ToString().c_str());

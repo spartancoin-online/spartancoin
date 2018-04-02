@@ -1,4 +1,5 @@
 // Copyright (c) 2012 The Bitcoin developers
+// Copyright (c) 2017-2018 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_LEVELDB_H
@@ -17,7 +18,8 @@ public:
     leveldb_error(const std::string &msg) : std::runtime_error(msg) {}
 };
 
-void HandleError(const leveldb::Status &status) throw(leveldb_error);
+// c++17: replace throw(leveldb_error) with noexcept(false);
+void HandleError(const leveldb::Status &status) noexcept(false);
 
 // Batch of changes queued to be written to a CLevelDB
 class CLevelDBBatch
@@ -80,7 +82,8 @@ public:
     CLevelDB(const boost::filesystem::path &path, size_t nCacheSize, bool fMemory = false, bool fWipe = false);
     ~CLevelDB();
 
-    template<typename K, typename V> bool Read(const K& key, V& value) throw(leveldb_error) {
+	// c++17: replace throw(leveldb_error) with noexcept(false);
+    template<typename K, typename V> bool Read(const K& key, V& value) noexcept(false) {
         CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(ssKey.GetSerializeSize(key));
         ssKey << key;
@@ -103,13 +106,15 @@ public:
         return true;
     }
 
-    template<typename K, typename V> bool Write(const K& key, const V& value, bool fSync = false) throw(leveldb_error) {
+	// c++17: replace throw(leveldb_error) with noexcept(false);
+    template<typename K, typename V> bool Write(const K& key, const V& value, bool fSync = false) noexcept(false) {
         CLevelDBBatch batch;
         batch.Write(key, value);
         return WriteBatch(batch, fSync);
     }
 
-    template<typename K> bool Exists(const K& key) throw(leveldb_error) {
+	// c++17: replace throw(leveldb_error) with noexcept(false);
+    template<typename K> bool Exists(const K& key) noexcept(false) {
         CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(ssKey.GetSerializeSize(key));
         ssKey << key;
@@ -126,20 +131,23 @@ public:
         return true;
     }
 
-    template<typename K> bool Erase(const K& key, bool fSync = false) throw(leveldb_error) {
+	// c++17: replace throw(leveldb_error) with noexcept(false);
+    template<typename K> bool Erase(const K& key, bool fSync = false) noexcept(false) {
         CLevelDBBatch batch;
         batch.Erase(key);
         return WriteBatch(batch, fSync);
     }
 
-    bool WriteBatch(CLevelDBBatch &batch, bool fSync = false) throw(leveldb_error);
+	// c++17: replace throw(leveldb_error) with noexcept(false);
+    bool WriteBatch(CLevelDBBatch &batch, bool fSync = false) noexcept(false);
 
     // not available for LevelDB; provide for compatibility with BDB
     bool Flush() {
         return true;
     }
 
-    bool Sync() throw(leveldb_error) {
+	// c++17: replace throw(leveldb_error) with noexcept(false);
+    bool Sync() noexcept(false) {
         CLevelDBBatch batch;
         return WriteBatch(batch, true);
     }
