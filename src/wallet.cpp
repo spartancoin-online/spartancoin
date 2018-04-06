@@ -1042,7 +1042,7 @@ static void ApproximateBestSubset(vector<pair<int64, pair<const CWalletTx*,unsig
     }
 }
 
-/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 // ====> Temporary Code <====
 // Custom Random Shuffle. The std::random_shuffle was removed
 // in c++17. This random_shuffle is a modification of 
@@ -1066,7 +1066,7 @@ namespace xjail {
 		}
 	}
 }
-/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
 bool CWallet::SelectCoinsMinConf(int64 nTargetValue, int nConfMine, int nConfTheirs, vector<COutput> vCoins,
                                  set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64& nValueRet) const
@@ -1081,7 +1081,7 @@ bool CWallet::SelectCoinsMinConf(int64 nTargetValue, int nConfMine, int nConfThe
     vector<pair<int64, pair<const CWalletTx*,unsigned int> > > vValue;
     int64 nTotalLower = 0;
 
-	// std::random_shuffle => xjail::random_shuffle (temporary use)
+	// std::random_shuffle => xjail::random_shuffle
 	// xjail::random_shuffle was defined above.
     xjail::random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
 

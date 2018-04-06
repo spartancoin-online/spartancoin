@@ -18,12 +18,8 @@ public:
     leveldb_error(const std::string &msg) : std::runtime_error(msg) {}
 };
 
-// old
-// void HandleError(const leveldb::Status &status) throw(leveldb_error);
-
-// new: 
-// c++17 exception specifications. Replaced by xjail.tiv.cc developers
-void HandleError(const leveldb::Status & status) noexcept(false);
+// c++17: replace throw(leveldb_error) with noexcept(false);
+void HandleError(const leveldb::Status &status) noexcept(false);
 
 // Batch of changes queued to be written to a CLevelDB
 class CLevelDBBatch
@@ -86,11 +82,7 @@ public:
     CLevelDB(const boost::filesystem::path &path, size_t nCacheSize, bool fMemory = false, bool fWipe = false);
     ~CLevelDB();
 
-	// old
-    // template<typename K, typename V> bool Read(const K& key, V& value) throw(leveldb_error) {
-
-	// new:
-	// c++17 exception specifications. Replaced by xjail.tiv.cc developers
+	// c++17: replace throw(leveldb_error) with noexcept(false);
     template<typename K, typename V> bool Read(const K& key, V& value) noexcept(false) {
         CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(ssKey.GetSerializeSize(key));
@@ -114,22 +106,14 @@ public:
         return true;
     }
 
-	// old
-    // template<typename K, typename V> bool Write(const K& key, const V& value, bool fSync = false) throw(leveldb_error) {
-
-	// new:
-	// c++17 exception specifications. Replaced by xjail.tiv.cc developers
+	// c++17: replace throw(leveldb_error) with noexcept(false);
     template<typename K, typename V> bool Write(const K& key, const V& value, bool fSync = false) noexcept(false) {
         CLevelDBBatch batch;
         batch.Write(key, value);
         return WriteBatch(batch, fSync);
     }
 
-	// old
-    // template<typename K> bool Exists(const K& key) throw(leveldb_error) {
-
-	// new:
-	// c++17 exception specifications. Replaced by xjail.tiv.cc developers
+	// c++17: replace throw(leveldb_error) with noexcept(false);
     template<typename K> bool Exists(const K& key) noexcept(false) {
         CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(ssKey.GetSerializeSize(key));
@@ -147,22 +131,14 @@ public:
         return true;
     }
 
-	// old
-    // template<typename K> bool Erase(const K& key, bool fSync = false) throw(leveldb_error) {
-
-	// new:
-	// c++17 exception specifications. Replaced by xjail.tiv.cc developers
+	// c++17: replace throw(leveldb_error) with noexcept(false);
     template<typename K> bool Erase(const K& key, bool fSync = false) noexcept(false) {
         CLevelDBBatch batch;
         batch.Erase(key);
         return WriteBatch(batch, fSync);
     }
 
-	// old
-    //bool WriteBatch(CLevelDBBatch &batch, bool fSync = false) throw(leveldb_error);
-
-	// new:
-	// c++17 exception specifications. Replaced by xjail.tiv.cc developers
+	// c++17: replace throw(leveldb_error) with noexcept(false);
     bool WriteBatch(CLevelDBBatch &batch, bool fSync = false) noexcept(false);
 
     // not available for LevelDB; provide for compatibility with BDB
@@ -170,11 +146,7 @@ public:
         return true;
     }
 
-    // old
-	// bool Sync() throw(leveldb_error) {
-
-	// new:
-	// c++17 exception specifications. Replaced by xjail.tiv.cc developers
+	// c++17: replace throw(leveldb_error) with noexcept(false);
     bool Sync() noexcept(false) {
         CLevelDBBatch batch;
         return WriteBatch(batch, true);

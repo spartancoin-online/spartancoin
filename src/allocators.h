@@ -1,6 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_ALLOCATORS_H
@@ -8,7 +7,7 @@
 
 #include <string.h>
 #include <string>
-#include <mutex>
+#include <boost/thread/mutex.hpp>
 #include <map>
 #include <openssl/crypto.h> // for OPENSSL_cleanse()
 
@@ -57,8 +56,7 @@ public:
     // For all pages in affected range, increase lock count
     void LockRange(void *p, size_t size)
     {
-		// std::scoped_lock and use it without template parameters: c++17 required
-        std::scoped_lock lock(mutex);
+        boost::mutex::scoped_lock lock(mutex);
         if(!size) return;
         const size_t base_addr = reinterpret_cast<size_t>(p);
         const size_t start_page = base_addr & page_mask;
@@ -81,8 +79,7 @@ public:
     // For all pages in affected range, decrease lock count
     void UnlockRange(void *p, size_t size)
     {
-		// std::scoped_lock and use it without template parameters: c++17 required
-        std::scoped_lock lock(mutex);
+        boost::mutex::scoped_lock lock(mutex);
         if(!size) return;
         const size_t base_addr = reinterpret_cast<size_t>(p);
         const size_t start_page = base_addr & page_mask;
@@ -105,14 +102,13 @@ public:
     // Get number of locked pages for diagnostics
     int GetLockedPageCount()
     {
-		// std::scoped_lock and use it without template parameters: c++17 required
-        std::scoped_lock lock(mutex);
+        boost::mutex::scoped_lock lock(mutex);
         return histogram.size();
     }
 
 private:
     Locker locker;
-    std::mutex mutex;
+    boost::mutex mutex;
     size_t page_size, page_mask;
     // map of page base address to lock count
     typedef std::map<size_t,int> Histogram;
