@@ -69,9 +69,7 @@ endif
 LIBS+= \
  -Wl,-B$(LMODE2) \
    -l z \
-   -l dl \
-   -l pthread
-
+   -l dl
 
 # Hardening
 # Make some classes of vulnerabilities unexploitable in case one is discovered.
@@ -118,6 +116,7 @@ xCXXFLAGS += -std=c++17
 # LDFLAGS can be specified on the make command line, so we use xLDFLAGS that only
 # adds some defaults in front. Unfortunately, LDFLAGS=... $(LDFLAGS) does not work.
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
+xLDFLAGS += -pthread -lboost_chrono
 
 OBJS= \
     leveldb/libleveldb.a \

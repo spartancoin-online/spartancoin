@@ -117,7 +117,7 @@ xCXXFLAGS += -stdlib=libc++ -std=c++17
 # LDFLAGS can be specified on the make command line, so we use xLDFLAGS that only
 # adds some defaults in front. Unfortunately, LDFLAGS=... $(LDFLAGS) does not work.
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
-xLDFLAGS += -lthr
+xLDFLAGS += -lthr -pthread -lboost_chrono
 
 OBJS= \
     leveldb/libleveldb.a \

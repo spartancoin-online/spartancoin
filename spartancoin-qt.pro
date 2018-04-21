@@ -10,6 +10,7 @@ CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += static
 QMAKE_CXXFLAGS += -std=c++17
+LIBS += -lboost_chrono
 
 # for boost 1.37, add -mt to the boost libraries
 # use: qmake BOOST_LIB_SUFFIX=-mt
