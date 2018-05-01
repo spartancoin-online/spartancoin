@@ -4,3 +4,5 @@ Found Bugs (Unsolved):
 	Switch from boot::this_thread::sleep_for to std::this_thread::sleep_for causes deadlock, as non-interruptible.
 
 	Upgrade to latest boost causes context asio.ssl error: When spartancoin-qt window or spartancoin daemon is running, "spartancoind stop" will causes that error.
+
+	openssl and libressl build chaos.
