@@ -12,6 +12,8 @@
 #include "bitcoinrpc.h"
 #include "db.h"
 
+#include "xjail_spn_util.h"
+
 #include <boost/asio.hpp>
 #include <boost/asio/ip/v6_only.hpp>
 #include <boost/bind.hpp>
@@ -432,7 +434,7 @@ int ReadHTTPHeaders(std::basic_istream<char>& stream, map<string, string>& mapHe
         {
             string strHeader = str.substr(0, nColon);
             boost::trim(strHeader);
-            boost::to_lower(strHeader);
+	    xjail::toLower(strHeader);
             string strValue = str.substr(nColon+1);
             boost::trim(strValue);
             mapHeadersRet[strHeader] = strValue;

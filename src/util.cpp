@@ -18,8 +18,10 @@
 #include "sync.h"
 #include "version.h"
 #include "ui_interface.h"
+
+#include "xjail_spn_util.h"
+
 #include <boost/algorithm/string/join.hpp>
-#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
 
 #include <iomanip>
@@ -560,7 +562,7 @@ void ParseParameters(int argc, const char* const argv[])
             str = str.substr(0, is_index);
         }
 #ifdef WIN32
-        boost::to_lower(str);
+	xjail::toLower(str);
         if (boost::algorithm::starts_with(str, "/"))
             str = "-" + str.substr(1);
 #endif

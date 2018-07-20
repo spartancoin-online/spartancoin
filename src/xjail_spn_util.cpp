@@ -6,6 +6,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <functional>
 
 void xjail::addStaticNodes(
 	std::map<std::string, std::string> & mapArgs_node, 
@@ -25,4 +26,36 @@ void xjail::addStaticNodes(
 		mapArgs_node[key] = addrs[i];
 		mapMultiArgs_node[key].push_back(addrs[i]);
 	}
+}
+
+char xjail::lower(char ch) {
+	if ((ch >= 'A' && ch <= 'Z') || (ch >= 'Z' && ch <= 'A'))
+		return ch - ('A' - 'a');
+	return ch;
+}
+
+char xjail::upper(char ch) {
+	if ((ch >= 'a' && ch <= 'z') || (ch >= 'z' && ch <= 'a'))
+		return ch + ('A' - 'a');
+	return ch;
+}
+
+std::string & xjail::toLower(std::string && str) {
+	std::transform(str.begin(), str.end(), str.begin(), xjail::lower);
+	return str;
+}
+
+std::string & xjail::toLower(std::string & str) {
+	std::transform(str.begin(), str.end(), str.begin(), xjail::lower);
+	return str;
+}
+
+std::string & xjail::toUpper(std::string && str) {
+	std::transform(str.begin(), str.end(), str.begin(), xjail::upper);
+	return str;
+}
+
+std::string & xjail::toUpper(std::string & str) {
+	std::transform(str.begin(), str.end(), str.begin(), xjail::upper);
+	return str;
 }

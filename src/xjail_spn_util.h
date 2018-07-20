@@ -9,12 +9,21 @@
 #include <vector>
 #include <string>
 
+using namespace std::string_literals;
+
 namespace xjail {
 
 void addStaticNodes(
 	std::map<std::string, std::string> & mapArgs_node, 
 	std::map<std::string, std::vector<std::string>> & mapMultiArgs_node
 );
+
+char lower(char ch);
+char upper(char ch);
+std::string & toLower(std::string && str);
+std::string & toLower(std::string & str);
+std::string & toUpper(std::string && str);
+std::string & toUpper(std::string & str);
 
 } // namespace xjail
 
