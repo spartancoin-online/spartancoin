@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 xjail.tiv.cc developers
+// Copyright (c) 2017-2018 SpartanCoin Xjail developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef H_BITCOIN_SCRIPT
@@ -252,7 +252,7 @@ protected:
         }
         else
         {
-            CBigNum bn(n);
+            CBigNum bn(n);	//	constructor  CBigNum(int64 n);
             *this << bn.getvch();
         }
         return *this;
@@ -266,7 +266,7 @@ protected:
         }
         else
         {
-            CBigNum bn(n);
+            CBigNum bn(n);	//	constructor  CBigNum(uint64 n);
             *this << bn.getvch();
         }
         return *this;

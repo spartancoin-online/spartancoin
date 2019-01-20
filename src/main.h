@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 xjail.tiv.cc developers
+// Copyright (c) 2017-2018 SpartanCoin Xjail developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_MAIN_H
@@ -1762,8 +1762,9 @@ public:
     {
         CBigNum bnTarget;
         bnTarget.SetCompact(nBits);
-        if (bnTarget <= 0)
+        if (bnTarget <= 0)	// operator<=
             return 0;
+		// constructor CBigNum(int n) and operator <<, /, + of CBigNum
         return (CBigNum(1)<<256) / (bnTarget+1);
     }
 
@@ -1830,7 +1831,8 @@ public:
 
 struct CBlockIndexWorkComparator
 {
-    bool operator()(CBlockIndex *pa, CBlockIndex *pb) {
+	// comparator passed to std::set must be with const qualifier.
+    bool operator()(CBlockIndex *pa, CBlockIndex *pb) const {
         if (pa->nChainWork > pb->nChainWork) return false;
         if (pa->nChainWork < pb->nChainWork) return true;
 
