@@ -1,5 +1,5 @@
 # Copyright (c) 2009-2010 Satoshi Nakamoto
-# Copyright (c) 2017 xjail.tiv.cc developers
+# Copyright (c) 2017-2018 xjail.tiv.cc developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -112,12 +112,12 @@ DEBUGFLAGS=-g
 # adds some defaults in front. Unfortunately, CXXFLAGS=... $(CXXFLAGS) does not work.
 xCXXFLAGS=-O2 -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter \
     $(DEBUGFLAGS) $(DEFS) $(HARDENING) $(CXXFLAGS)
-xCXXFLAGS += -stdlib=libc++ -std=c++14
+xCXXFLAGS += -stdlib=libc++ -std=c++17
 
 # LDFLAGS can be specified on the make command line, so we use xLDFLAGS that only
 # adds some defaults in front. Unfortunately, LDFLAGS=... $(LDFLAGS) does not work.
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
-xLDFLAGS += -lthr
+xLDFLAGS += -lthr -pthread -lboost_chrono
 
 OBJS= \
     leveldb/libleveldb.a \
@@ -151,7 +151,8 @@ OBJS= \
     obj/bloom.o \
     obj/noui.o \
     obj/leveldb.o \
-    obj/txdb.o
+    obj/txdb.o \
+    obj/xjail_spn_util.o
 
 
 ifdef USE_SSE2

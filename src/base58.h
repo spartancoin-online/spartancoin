@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin Developers
+// Copyright (c) 2019 SpartanCoin Xjail developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -50,9 +51,9 @@ inline std::string EncodeBase58(const unsigned char* pbegin, const unsigned char
     CBigNum rem;
     while (bn > bn0)
     {
-        if (!BN_div(&dv, &rem, &bn, &bn58, pctx))
+        if (!BN_div(dv.bn_ptr, rem.bn_ptr, bn.bn_ptr, bn58.bn_ptr, pctx))
             throw bignum_error("EncodeBase58 : BN_div failed");
-        bn = dv;
+        bn = dv;	// (copy) operator= of CBigNum
         unsigned int c = rem.getulong();
         str += pszBase58[c];
     }
@@ -97,7 +98,7 @@ inline bool DecodeBase58(const char* psz, std::vector<unsigned char>& vchRet)
             break;
         }
         bnChar.setulong(p1 - pszBase58);
-        if (!BN_mul(&bn, &bn, &bn58, pctx))
+        if (!BN_mul(bn.bn_ptr, bn.bn_ptr, bn58.bn_ptr, pctx))
             throw bignum_error("DecodeBase58 : BN_mul failed");
         bn += bnChar;
     }

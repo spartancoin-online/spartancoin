@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017 xjail.tiv.cc developers
+// Copyright (c) 2017-2018 xjail.tiv.cc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "wallet.h"
@@ -1042,6 +1042,32 @@ static void ApproximateBestSubset(vector<pair<int64, pair<const CWalletTx*,unsig
     }
 }
 
+////////////////////////////////////////////////////////////////////////
+// ====> Temporary Code <====
+// Custom Random Shuffle. The std::random_shuffle was removed
+// in c++17. This random_shuffle is a modification of 
+// std::random_shuffle in LLVM c++/v1/algorithm from 
+// FreeBSD System Headers.
+// The best solution is using std::shuffle, which will be 
+// implemented in the future to write a custom URBG class.
+// Copyright (c) xjail.tiv.cc developers.
+namespace xjail {
+	template <typename RandomIter, typename RandomFunc>
+	void random_shuffle(RandomIter first, RandomIter last, 
+					RandomFunc && rand_fn) {
+		using DiffType = typename std::iterator_traits<RandomIter>
+						::difference_type;
+		DiffType max_setting = last - first;
+		if (max_setting > 1) {
+			for (--last; first < last; ++first, --max_setting) {
+				DiffType rand_i = rand_fn(max_setting);
+				std::swap(*first, *(first + rand_i));
+			}
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////
+
 bool CWallet::SelectCoinsMinConf(int64 nTargetValue, int nConfMine, int nConfTheirs, vector<COutput> vCoins,
                                  set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64& nValueRet) const
 {
@@ -1055,7 +1081,9 @@ bool CWallet::SelectCoinsMinConf(int64 nTargetValue, int nConfMine, int nConfThe
     vector<pair<int64, pair<const CWalletTx*,unsigned int> > > vValue;
     int64 nTotalLower = 0;
 
-    random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
+	// std::random_shuffle => xjail::random_shuffle
+	// xjail::random_shuffle was defined above.
+    xjail::random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
 
     for(COutput output: vCoins)
     {

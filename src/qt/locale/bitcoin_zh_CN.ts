@@ -5,12 +5,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
         <source>About Spartancoin</source>
-        <translation>关于蜗牛币</translation>
+        <translation>关于奇士币</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>&lt;b&gt;Spartancoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;蜗牛币&lt;/b&gt;版本</translation>
+        <translation>&lt;b&gt;奇士币&lt;/b&gt;版本</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -68,7 +68,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
         <source>These are your Spartancoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>这是您用来收款的蜗牛币地址。为了标记不同的资金来源，建议为每个付款人保留不同的收款地址。</translation>
+        <translation>这是您用来收款的奇士币地址。为了标记不同的资金来源，建议为每个付款人保留不同的收款地址。</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -108,7 +108,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-44"/>
         <source>Verify a message to ensure it was signed with a specified Spartancoin address</source>
-        <translation>验证消息，确保消息是由指定的蜗牛币地址签名过的。</translation>
+        <translation>验证消息，确保消息是由指定的奇士币地址签名过的。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -123,7 +123,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
         <source>These are your Spartancoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>这是您用来付款的蜗牛币地址。在付款前，请总是核实付款金额和收款地址。</translation>
+        <translation>这是您用来付款的奇士币地址。在付款前，请总是核实付款金额和收款地址。</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -249,7 +249,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+1"/>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR SPARTANCOINS&lt;/b&gt;!</source>
-        <translation>警告：如果您加密了您的钱包，但是忘记了密码，你将会&lt;b&gt;丢失所有的蜗牛币&lt;/b&gt;！</translation>
+        <translation>警告：如果您加密了您的钱包，但是忘记了密码，你将会&lt;b&gt;丢失所有的奇士币&lt;/b&gt;！</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -276,7 +276,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-56"/>
         <source>Spartancoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your spartancoins from being stolen by malware infecting your computer.</source>
-        <translation>将关闭软件以完成加密过程。 请您谨记：钱包加密并不是万能的，电脑中毒，您的蜗牛币还是有可能丢失。</translation>
+        <translation>将关闭软件以完成加密过程。 请您谨记：钱包加密并不是万能的，电脑中毒，您的奇士币还是有可能丢失。</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -375,7 +375,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>Show information about Spartancoin</source>
-        <translation>显示蜗牛币的相关信息</translation>
+        <translation>显示奇士币的相关信息</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -420,7 +420,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-347"/>
         <source>Send coins to a Spartancoin address</source>
-        <translation>向一个蜗牛币地址发送蜗牛币</translation>
+        <translation>向一个奇士币地址发送奇士币</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -456,7 +456,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-165"/>
         <location line="+530"/>
         <source>Spartancoin</source>
-        <translation>蜗牛币</translation>
+        <translation>奇士币</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -481,7 +481,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+22"/>
         <source>&amp;About Spartancoin</source>
-        <translation>&amp;关于蜗牛币</translation>
+        <translation>&amp;关于奇士币</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -501,12 +501,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+7"/>
         <source>Sign messages with your Spartancoin addresses to prove you own them</source>
-        <translation>用蜗牛币地址关联的私钥为消息签名，以证明您拥有这个蜗牛币地址</translation>
+        <translation>用奇士币地址关联的私钥为消息签名，以证明您拥有这个奇士币地址</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Verify messages to ensure they were signed with specified Spartancoin addresses</source>
-        <translation>校验消息，确保该消息是由指定的蜗牛币地址所有者签名的</translation>
+        <translation>校验消息，确保该消息是由指定的奇士币地址所有者签名的</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -537,12 +537,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+47"/>
         <source>Spartancoin client</source>
-        <translation>蜗牛币客户端</translation>
+        <translation>奇士币客户端</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
         <source>%n active connection(s) to Spartancoin network</source>
-        <translation><numerusform>到蜗牛币网络的连接共有%n条</numerusform></translation>
+        <translation><numerusform>到奇士币网络的连接共有%n条</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -607,7 +607,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+70"/>
         <source>This transaction is over the size limit. You can still send it for a fee of %1, which goes to the nodes that process your transaction and helps to support the network. Do you want to pay the fee?</source>
-        <translation>该交易的字节数超标。您可以选择支付%1的交易费给处理您的交易的网络节点，有助于蜗牛币网络的运行。您愿意支付这笔交易费用吗？</translation>
+        <translation>该交易的字节数超标。您可以选择支付%1的交易费给处理您的交易的网络节点，有助于奇士币网络的运行。您愿意支付这笔交易费用吗？</translation>
     </message>
     <message>
         <location line="-140"/>
@@ -657,7 +657,7 @@ Address: %4
         <location line="-23"/>
         <location line="+23"/>
         <source>URI can not be parsed! This can be caused by an invalid Spartancoin address or malformed URI parameters.</source>
-        <translation>URI无法解析！原因可能是蜗牛币地址不正确，或者URI参数错误。</translation>
+        <translation>URI无法解析！原因可能是奇士币地址不正确，或者URI参数错误。</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -738,7 +738,7 @@ Address: %4
     <message>
         <location line="-5"/>
         <source>The entered address &quot;%1&quot; is not a valid Spartancoin address.</source>
-        <translation>您输入的 &quot;%1&quot; 不是合法的蜗牛币地址.</translation>
+        <translation>您输入的 &quot;%1&quot; 不是合法的奇士币地址.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -821,7 +821,7 @@ Address: %4
     <message>
         <location line="+31"/>
         <source>Automatically start Spartancoin after logging in to the system.</source>
-        <translation>登录系统后自动开启蜗牛币客户端</translation>
+        <translation>登录系统后自动开启奇士币客户端</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -846,7 +846,7 @@ Address: %4
     <message>
         <location line="+6"/>
         <source>Automatically open the Spartancoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>自动在路由器中打开蜗牛币端口。只有当您的路由器开启 UPnP 选项时此功能才有效。</translation>
+        <translation>自动在路由器中打开奇士币端口。只有当您的路由器开启 UPnP 选项时此功能才有效。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -856,7 +856,7 @@ Address: %4
     <message>
         <location line="+7"/>
         <source>Connect to the Spartancoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>通过代理服务器连接蜗牛币网络(例如：通过Tor连接)</translation>
+        <translation>通过代理服务器连接奇士币网络(例如：通过Tor连接)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -936,22 +936,22 @@ Address: %4
     <message>
         <location line="+11"/>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;蜗牛币金额单位:</translation>
+        <translation>&amp;奇士币金额单位:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>选择蜗牛币单位。</translation>
+        <translation>选择奇士币单位。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Whether to show Spartancoin addresses in the transaction list or not.</source>
-        <translation>是否需要在交易清单中显示蜗牛币地址。</translation>
+        <translation>是否需要在交易清单中显示奇士币地址。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Display addresses in transaction list</source>
-        <translation>在交易清单中&amp;显示蜗牛币地址</translation>
+        <translation>在交易清单中&amp;显示奇士币地址</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1017,7 +1017,7 @@ Address: %4
         <location line="+50"/>
         <location line="+166"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Spartancoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>现在显示的消息可能是过期的. 在连接上蜗牛币网络节点后，您的钱包将自动与网络同步，但是这个过程还没有完成.</translation>
+        <translation>现在显示的消息可能是过期的. 在连接上奇士币网络节点后，您的钱包将自动与网络同步，但是这个过程还没有完成.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1071,7 +1071,7 @@ Address: %4
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
         <source>Cannot start spartancoin: click-to-pay handler</source>
-        <translation>暂时无法启动蜗牛币：点击支付功能</translation>
+        <translation>暂时无法启动奇士币：点击支付功能</translation>
     </message>
 </context>
 <context>
@@ -1186,7 +1186,7 @@ Address: %4
     <message>
         <location line="+23"/>
         <source>On testnet</source>
-        <translation>当前为蜗牛币测试网络</translation>
+        <translation>当前为奇士币测试网络</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -1241,12 +1241,12 @@ Address: %4
     <message>
         <location line="-104"/>
         <source>Spartancoin - Debug window</source>
-        <translation>蜗牛币 - 调试窗口</translation>
+        <translation>奇士币 - 调试窗口</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Spartancoin Core</source>
-        <translation>蜗牛币核心</translation>
+        <translation>奇士币核心</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1386,7 +1386,7 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>错误: 交易被拒绝. 如果您使用的是备份钱包，可能存在两个钱包不同步的情况，另一个钱包中的蜗牛币已经被使用，但本地的这个钱包尚没有记录。</translation>
+        <translation>错误: 交易被拒绝. 如果您使用的是备份钱包，可能存在两个钱包不同步的情况，另一个钱包中的奇士币已经被使用，但本地的这个钱包尚没有记录。</translation>
     </message>
 </context>
 <context>
@@ -1450,7 +1450,7 @@ Address: %4
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
         <source>Enter a Spartancoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>请输入蜗牛币地址 (例如: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <translation>请输入奇士币地址 (例如: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
 </context>
 <context>
@@ -1551,7 +1551,7 @@ Address: %4
     <message>
         <location line="+40"/>
         <source>Verify the message to ensure it was signed with the specified Spartancoin address</source>
-        <translation>验证消息，确保消息是由指定的蜗牛币地址签名过的。</translation>
+        <translation>验证消息，确保消息是由指定的奇士币地址签名过的。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1567,7 +1567,7 @@ Address: %4
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
         <source>Enter a Spartancoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>请输入蜗牛币地址 (例如: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <translation>请输入奇士币地址 (例如: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1577,7 +1577,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Enter Spartancoin signature</source>
-        <translation>输入蜗牛币签名</translation>
+        <translation>输入奇士币签名</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1785,7 +1785,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>新挖出的蜗牛币必须等确120个确认才能使用。您生产出的数据块，将被广播到全网并添加到数据块链。如果入链失败，状态将变为“未被接受”，意味着您的数据块竞争失败，挖出的蜗牛币将不能使用。当某个节点先于你几秒生产出新的数据块，这种情况会偶尔发生。</translation>
+        <translation>新挖出的奇士币必须等确120个确认才能使用。您生产出的数据块，将被广播到全网并添加到数据块链。如果入链失败，状态将变为“未被接受”，意味着您的数据块竞争失败，挖出的奇士币将不能使用。当某个节点先于你几秒生产出新的数据块，这种情况会偶尔发生。</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1946,7 +1946,7 @@ Address: %4
     <message>
         <location line="+2"/>
         <source>Date and time that the transaction was received.</source>
-        <translation>接收蜗牛币的时间</translation>
+        <translation>接收奇士币的时间</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2138,7 +2138,7 @@ Address: %4
     <message>
         <location filename="../walletmodel.cpp" line="+193"/>
         <source>Send Coins</source>
-        <translation>发送蜗牛币</translation>
+        <translation>发送奇士币</translation>
     </message>
 </context>
 <context>
@@ -2189,7 +2189,7 @@ Address: %4
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
         <source>Spartancoin version</source>
-        <translation>蜗牛币版本</translation>
+        <translation>奇士币版本</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2350,7 +2350,7 @@ rpcpassword=%s
     <message>
         <location line="+3"/>
         <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>错误：该交易被拒绝！发生这种错误的原因可能是：钱包中的蜗牛币已经被用掉，有可能您复制了wallet.dat钱包文件，然后用复制的钱包文件支付了蜗牛币，但是这个钱包文件中没有记录。</translation>
+        <translation>错误：该交易被拒绝！发生这种错误的原因可能是：钱包中的奇士币已经被用掉，有可能您复制了wallet.dat钱包文件，然后用复制的钱包文件支付了奇士币，但是这个钱包文件中没有记录。</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2390,7 +2390,7 @@ rpcpassword=%s
     <message>
         <location line="+3"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Spartancoin will not work properly.</source>
-        <translation>警告：请检查电脑的日期时间设置是否正确！时间错误可能会导致蜗牛币客户端运行异常。</translation>
+        <translation>警告：请检查电脑的日期时间设置是否正确！时间错误可能会导致奇士币客户端运行异常。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2905,7 +2905,7 @@ rpcpassword=%s
     <message>
         <location line="-25"/>
         <source>Unable to bind to %s on this computer. Spartancoin is probably already running.</source>
-        <translation>无法在本机绑定 %s 端口 . 蜗牛币客户端软件可能已经在运行.</translation>
+        <translation>无法在本机绑定 %s 端口 . 奇士币客户端软件可能已经在运行.</translation>
     </message>
     <message>
         <location line="+64"/>
