@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 SpartanCoin Xjail developers
+// Copyright (c) 2017-2019 SpartanCoin Xjail developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -35,7 +35,7 @@ using namespace json_spirit;
 static std::string strRPCUserColonPass;
 
 // These are created by StartRPCThreads, destroyed in StopRPCThreads
-static asio::io_service* rpc_io_service = NULL;
+static asio::io_context * rpc_io_context = NULL;
 static ssl::context* rpc_ssl_context = NULL;
 static boost::thread_group* rpc_worker_group = NULL;
 
@@ -591,10 +591,13 @@ public:
     }
     bool connect(const std::string& server, const std::string& port)
     {
-        ip::tcp::resolver resolver(stream.get_io_service());
-        ip::tcp::resolver::query query(server.c_str(), port.c_str());
-        ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-        ip::tcp::resolver::iterator end;
+        ip::tcp::resolver resolver(stream.get_executor().context());
+        //ip::tcp::resolver::query query(server.c_str(), port.c_str());
+        //ip::tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
+	ip::tcp::resolver::results_type sequence = 
+		resolver.resolve(server.c_str(), port.c_str());
+	ip::tcp::resolver::results_type::iterator endpoint_iterator = sequence.begin();
+        ip::tcp::resolver::results_type::iterator end;
         boost::system::error_code error = asio::error::host_not_found;
         while (error && endpoint_iterator != end)
         {
@@ -627,10 +630,10 @@ class AcceptedConnectionImpl : public AcceptedConnection
 {
 public:
     AcceptedConnectionImpl(
-            asio::io_service& io_service,
+            asio::io_context & io_context,
             ssl::context &context,
             bool fUseSSL) :
-        sslStream(io_service, context),
+        sslStream(io_context, context),
         _d(sslStream, fUseSSL),
         _stream(_d)
     {
@@ -678,7 +681,7 @@ static void RPCListen(boost::shared_ptr<basic_socket_acceptor<Protocol>> accepto
                    const bool fUseSSL)
 {
     // Accept connection
-    AcceptedConnectionImpl<Protocol>* conn = new AcceptedConnectionImpl<Protocol>(acceptor->get_io_service(), context, fUseSSL);
+    AcceptedConnectionImpl<Protocol>* conn = new AcceptedConnectionImpl<Protocol>(acceptor->get_executor().context(), context, fUseSSL);
 
     acceptor->async_accept(
             conn->sslStream.lowest_layer(),
@@ -762,8 +765,8 @@ void StartRPCThreads()
         return;
     }
 
-    assert(rpc_io_service == NULL);
-    rpc_io_service = new asio::io_service();
+    assert(rpc_io_context == NULL);
+    rpc_io_context = new asio::io_context();
     rpc_ssl_context = new ssl::context(ssl::context::sslv23);
 
     const bool fUseSSL = GetBoolArg("-rpcssl");
@@ -791,7 +794,7 @@ void StartRPCThreads()
     asio::ip::address bindAddress = loopback ? asio::ip::address_v6::loopback() : asio::ip::address_v6::any();
     ip::tcp::endpoint endpoint(bindAddress, GetArg("-rpcport", GetDefaultRPCPort()));
     boost::system::error_code v6_only_error;
-    boost::shared_ptr<ip::tcp::acceptor> acceptor(new ip::tcp::acceptor(*rpc_io_service));
+    boost::shared_ptr<ip::tcp::acceptor> acceptor(new ip::tcp::acceptor(*rpc_io_context));
 
     bool fListening = false;
     std::string strerr;
@@ -804,7 +807,7 @@ void StartRPCThreads()
         acceptor->set_option(boost::asio::ip::v6_only(loopback), v6_only_error);
 
         acceptor->bind(endpoint);
-        acceptor->listen(socket_base::max_connections);
+        acceptor->listen(socket_base::max_listen_connections);
 
         RPCListen(acceptor, *rpc_ssl_context, fUseSSL);
 
@@ -822,11 +825,11 @@ void StartRPCThreads()
             bindAddress = loopback ? asio::ip::address_v4::loopback() : asio::ip::address_v4::any();
             endpoint.address(bindAddress);
 
-            acceptor.reset(new ip::tcp::acceptor(*rpc_io_service));
+            acceptor.reset(new ip::tcp::acceptor(*rpc_io_context));
             acceptor->open(endpoint.protocol());
             acceptor->set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
             acceptor->bind(endpoint);
-            acceptor->listen(socket_base::max_connections);
+            acceptor->listen(socket_base::max_listen_connections);
 
             RPCListen(acceptor, *rpc_ssl_context, fUseSSL);
 
@@ -846,18 +849,18 @@ void StartRPCThreads()
 
     rpc_worker_group = new boost::thread_group();
     for (int i = 0; i < GetArg("-rpcthreads", 4); i++)
-        rpc_worker_group->create_thread(boost::bind(&asio::io_service::run, rpc_io_service));
+        rpc_worker_group->create_thread(boost::bind(&asio::io_context::run, rpc_io_context));
 }
 
 void StopRPCThreads()
 {
-    if (rpc_io_service == NULL) return;
+    if (rpc_io_context == NULL) return;
 
-    rpc_io_service->stop();
+    rpc_io_context->stop();
     rpc_worker_group->join_all();
     delete rpc_worker_group; rpc_worker_group = NULL;
     delete rpc_ssl_context; rpc_ssl_context = NULL;
-    delete rpc_io_service; rpc_io_service = NULL;
+    delete rpc_io_context; rpc_io_context = NULL;
 }
 
 class JSONRequest
@@ -1065,10 +1068,10 @@ Object CallRPC(const string& strMethod, const Array& params)
 
     // Connect to localhost
     bool fUseSSL = GetBoolArg("-rpcssl");
-    asio::io_service io_service;
+    asio::io_context io_context;
     ssl::context context(ssl::context::sslv23);
     context.set_options(ssl::context::no_sslv2);
-    asio::ssl::stream<asio::ip::tcp::socket> sslStream(io_service, context);
+    asio::ssl::stream<asio::ip::tcp::socket> sslStream(io_context, context);
     SSLIOStreamDevice<asio::ip::tcp> d(sslStream, fUseSSL);
     iostreams::stream< SSLIOStreamDevice<asio::ip::tcp> > stream(d);
     if (!d.connect(GetArg("-rpcconnect", "127.0.0.1"), GetArg("-rpcport", itostr(GetDefaultRPCPort()))))
