@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 xjail.tiv.cc developers
+// Copyright (c) 2017-2018 SpartanCoin Xjail developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "wallet.h"
@@ -1050,7 +1050,7 @@ static void ApproximateBestSubset(vector<pair<int64, pair<const CWalletTx*,unsig
 // FreeBSD System Headers.
 // The best solution is using std::shuffle, which will be 
 // implemented in the future to write a custom URBG class.
-// Copyright (c) xjail.tiv.cc developers.
+// Copyright (c) SpartanCoin Xjail developers.
 namespace xjail {
 	template <typename RandomIter, typename RandomFunc>
 	void random_shuffle(RandomIter first, RandomIter last, 
