@@ -8,7 +8,7 @@
 #include "sync.h"
 #include "hash.h"
 
-#include "xjail_spn_util.h"
+#include "spn_util.h"
 
 #ifndef WIN32
 #include <sys/fcntl.h>
@@ -28,7 +28,7 @@ bool fNameLookup = false;
 static const unsigned char pchIPv4[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff };
 
 enum Network ParseNetwork(std::string net) {
-    xjail::toLower(net);
+    spn::toLower(net);
     if (net == "ipv4") return NET_IPV4;
     if (net == "ipv6") return NET_IPV6;
     if (net == "tor")  return NET_TOR;

@@ -89,7 +89,7 @@ OBJS= \
     obj/bloom.o \
     obj/leveldb.o \
     obj/txdb.o \
-    obj/xjail_spn_util.o
+    obj/spn_util.o
 
 ifdef USE_SSE2
 DEFS += -DUSE_SSE2

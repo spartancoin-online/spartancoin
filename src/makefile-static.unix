@@ -161,7 +161,7 @@ OBJS= \
     obj/noui.o \
     obj/leveldb.o \
     obj/txdb.o \
-    obj/xjail_spn_util.o
+    obj/spn_util.o
 
 
 ifdef USE_SSE2

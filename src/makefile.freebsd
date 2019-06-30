@@ -1,5 +1,5 @@
 # Copyright (c) 2009-2010 Satoshi Nakamoto
-# Copyright (c) 2017-2018 SpartanCoin Xjail developers
+# Copyright (c) 2017-2018 New SpartanCoin Developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -152,7 +152,7 @@ OBJS= \
     obj/noui.o \
     obj/leveldb.o \
     obj/txdb.o \
-    obj/xjail_spn_util.o
+    obj/spn_util.o
 
 
 ifdef USE_SSE2

@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 SpartanCoin Xjail developers
+// Copyright (c) 2017-2018 New SpartanCoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef __xjail_spn_util_h__
-#define __xjail_spn_util_h__
+#ifndef __spn_util_h__
+#define __spn_util_h__
 
 #include <map>
 #include <vector>
@@ -11,7 +11,7 @@
 
 using namespace std::string_literals;
 
-namespace xjail {
+namespace spn {
 
 void addStaticNodes(
 	std::map<std::string, std::string> & mapArgs_node, 
@@ -25,6 +25,6 @@ std::string & toLower(std::string & str);
 std::string & toUpper(std::string && str);
 std::string & toUpper(std::string & str);
 
-} // namespace xjail
+} // namespace spn
 
-#endif
+#endif	// __spn_util_h__

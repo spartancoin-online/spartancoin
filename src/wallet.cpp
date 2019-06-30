@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 SpartanCoin Xjail developers
+// Copyright (c) 2017-2018 New SpartanCoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "wallet.h"
@@ -1050,8 +1050,8 @@ static void ApproximateBestSubset(vector<pair<int64, pair<const CWalletTx*,unsig
 // FreeBSD System Headers.
 // The best solution is using std::shuffle, which will be 
 // implemented in the future to write a custom URBG class.
-// Copyright (c) SpartanCoin Xjail developers.
-namespace xjail {
+// Copyright (c) New SpartanCoin Developers.
+namespace spn {
 	template <typename RandomIter, typename RandomFunc>
 	void random_shuffle(RandomIter first, RandomIter last, 
 					RandomFunc && rand_fn) {
@@ -1081,9 +1081,9 @@ bool CWallet::SelectCoinsMinConf(int64 nTargetValue, int nConfMine, int nConfThe
     vector<pair<int64, pair<const CWalletTx*,unsigned int> > > vValue;
     int64 nTotalLower = 0;
 
-	// std::random_shuffle => xjail::random_shuffle
-	// xjail::random_shuffle was defined above.
-    xjail::random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
+	// std::random_shuffle => spn::random_shuffle
+	// spn::random_shuffle was defined above.
+    spn::random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
 
     for(COutput output: vCoins)
     {

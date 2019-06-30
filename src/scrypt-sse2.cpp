@@ -1,5 +1,6 @@
 /*
- * Copyright 2009 Colin Percival, 2011 ArtForz, 2012-2013 pooler, 2017 xjail
+ * Copyright 2009 Colin Percival, 2011 ArtForz, 2012-2013 pooler, 
+ * 2017 New SpartanCoin Developers
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

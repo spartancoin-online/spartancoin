@@ -1,12 +1,12 @@
 Spartancoin integration/staging tree
 ================================
 
-https://www.spartancoin.tiv.cc
+https://spartancoin.ooo
 
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2011-2013 Litecoin Developers
 Copyright (c) 2014 Spartancoin Developers
-Copyright (c) 2017-2019 SpartanCoin Xjail Developers
+Copyright (c) 2017-2019 New SpartanCoin Developers
 
 What is Spartancoin?
 ----------------

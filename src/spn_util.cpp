@@ -1,24 +1,24 @@
-// Copyright (c) 2017-2018 SpartanCoin Xjail developers
+// Copyright (c) 2017-2018 New SpartanCoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "xjail_spn_util.h"
+#include "spn_util.h"
 #include <map>
 #include <vector>
 #include <string>
 #include <functional>
 
-void xjail::addStaticNodes(
+void spn::addStaticNodes(
 	std::map<std::string, std::string> & mapArgs_node, 
 	std::map<std::string, std::vector<std::string>> & mapMultiArgs_node
 ) {
-	const std::string & key = "-addnode";
-	const std::vector<std::string> & addrs {
-		"spn-node39.xjail.tiv.cc", 
+	const std::string key = "-addnode";
+	const std::vector<std::string> addrs {
+		"node-a.spartancoin.ooo",
 		"45.63.15.197", 
 		"2001:19f0:5:c8c:5400:ff:fe79:637e", 
 
-		"spn-node71.xjail.tiv.cc", 
+		"node-b.spartancoin.ooo", 
 		"104.207.144.147", 
 		"2001:19f0:9002:2ef:5400:ff:fe79:3d75" 
 	};
@@ -28,34 +28,34 @@ void xjail::addStaticNodes(
 	}
 }
 
-char xjail::lower(char ch) {
+char spn::lower(char ch) {
 	if ((ch >= 'A' && ch <= 'Z') || (ch >= 'Z' && ch <= 'A'))
 		return ch - ('A' - 'a');
 	return ch;
 }
 
-char xjail::upper(char ch) {
+char spn::upper(char ch) {
 	if ((ch >= 'a' && ch <= 'z') || (ch >= 'z' && ch <= 'a'))
 		return ch + ('A' - 'a');
 	return ch;
 }
 
-std::string & xjail::toLower(std::string && str) {
-	std::transform(str.begin(), str.end(), str.begin(), xjail::lower);
+std::string & spn::toLower(std::string && str) {
+	std::transform(str.begin(), str.end(), str.begin(), spn::lower);
 	return str;
 }
 
-std::string & xjail::toLower(std::string & str) {
-	std::transform(str.begin(), str.end(), str.begin(), xjail::lower);
+std::string & spn::toLower(std::string & str) {
+	std::transform(str.begin(), str.end(), str.begin(), spn::lower);
 	return str;
 }
 
-std::string & xjail::toUpper(std::string && str) {
-	std::transform(str.begin(), str.end(), str.begin(), xjail::upper);
+std::string & spn::toUpper(std::string && str) {
+	std::transform(str.begin(), str.end(), str.begin(), spn::upper);
 	return str;
 }
 
-std::string & xjail::toUpper(std::string & str) {
-	std::transform(str.begin(), str.end(), str.begin(), xjail::upper);
+std::string & spn::toUpper(std::string & str) {
+	std::transform(str.begin(), str.end(), str.begin(), spn::upper);
 	return str;
 }

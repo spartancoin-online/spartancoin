@@ -386,7 +386,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/noui.cpp \
     src/leveldb.cpp \
     src/txdb.cpp \
-    src/xjail_spn_util.cpp \
+    src/spn_util.cpp \
     src/qt/splashscreen.cpp
 
 RESOURCES += src/qt/bitcoin.qrc

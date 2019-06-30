@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 SpartanCoin Xjail developers
+// Copyright (c) 2017-2018 New SpartanCoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,7 +19,7 @@
 #include "version.h"
 #include "ui_interface.h"
 
-#include "xjail_spn_util.h"
+#include "spn_util.h"
 
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
@@ -562,7 +562,7 @@ void ParseParameters(int argc, const char* const argv[])
             str = str.substr(0, is_index);
         }
 #ifdef WIN32
-	xjail::toLower(str);
+	spn::toLower(str);
         if (boost::algorithm::starts_with(str, "/"))
             str = "-" + str.substr(1);
 #endif
