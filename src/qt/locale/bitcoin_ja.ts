@@ -5,12 +5,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
         <source>About Spartancoin</source>
-        <translation>Spartancoinについて</translation>
+        <translation>スパルタンコインについて</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>&lt;b&gt;Spartancoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Spartancoin&lt;/b&gt; バージョン</translation>
+        <translation>&lt;b&gt;スパルタンコイン&lt;/b&gt; バージョン</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -370,7 +370,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>Show information about Spartancoin</source>
-        <translation>Spartancoinに関する情報を見る</translation>
+        <translation>スパルタンコインに関する情報を見る</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2179,7 +2179,7 @@ Address: %4
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
         <source>Spartancoin version</source>
-        <translation>Spartancoin Bertsio</translation>
+        <translation>スパルタンコイン Bertsio</translation>
     </message>
     <message>
         <location line="+102"/>
