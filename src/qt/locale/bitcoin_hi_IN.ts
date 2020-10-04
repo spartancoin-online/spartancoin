@@ -5,12 +5,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
         <source>About Spartancoin</source>
-        <translation>बिटकोइन के संबंध में</translation>
+        <translation>स्पार्टान्कोइन के संबंध में</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>&lt;b&gt;Spartancoin&lt;/b&gt; version</source>
-        <translation>बिटकोइन वर्सन</translation>
+        <translation>स्पार्टान्कोइन वर्सन</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -371,7 +371,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>Show information about Spartancoin</source>
-        <translation>बीटकोइन के बारे में जानकारी !</translation>
+	<translation>स्पार्टान्कोइन के बारे में जानकारी दिखाएँ</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -452,7 +452,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-165"/>
         <location line="+530"/>
         <source>Spartancoin</source>
-        <translation>बीटकोइन</translation>
+        <translation>स्पार्टान्कोइन</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -752,7 +752,7 @@ Address: %4
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
         <source>Spartancoin-Qt</source>
-        <translation>बीटकोइन-Qt</translation>
+        <translation>Spartancoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1315,8 +1315,8 @@ Address: %4
     </message>
     <message>
         <location line="+10"/>
-        <source>123.456 BTC</source>
-        <translation>123.456 BTC</translation>
+        <source>123.456 SPN</source>
+        <translation>123.456 SPN</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1445,7 +1445,7 @@ Address: %4
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
         <source>Enter a Spartancoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Spartancoin एड्रेस लिखें (उदाहरण: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <translation>स्पार्टान्कोइन एड्रेस लिखें (उदाहरण: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
 </context>
 <context>
@@ -1562,7 +1562,7 @@ Address: %4
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
         <source>Enter a Spartancoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Spartancoin एड्रेस लिखें (उदाहरण: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <translation>स्पार्टान्कोइन एड्रेस लिखें (उदाहरण: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2184,7 +2184,7 @@ Address: %4
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
         <source>Spartancoin version</source>
-        <translation>बीटकोइन  संस्करण</translation>
+	<translation>स्पार्टान्कोइन संस्करण</translation>
     </message>
     <message>
         <location line="+102"/>
