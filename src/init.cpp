@@ -19,7 +19,9 @@
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <openssl/crypto.h>
-
+#ifdef USE_UPNP
+#include <miniupnpc/miniupnpc.h>
+#endif
 #include <iomanip>
 #include <sstream>
 #include <string>
