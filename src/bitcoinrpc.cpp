@@ -589,7 +589,7 @@ public:
         if (fUseSSL) return asio::write(stream, asio::buffer(s, n));
         return asio::write(stream.next_layer(), asio::buffer(s, n));
     }
-    bool connect(const std::string& server, const std::string& port)
+    bool connect(const std::string& server, std::string port)
     {
         ip::tcp::resolver resolver(stream.get_executor().context());
         //ip::tcp::resolver::query query(server.c_str(), port.c_str());
